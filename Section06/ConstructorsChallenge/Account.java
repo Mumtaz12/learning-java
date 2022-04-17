@@ -11,14 +11,17 @@ public class Account {
         System.out.println("First conductor");
     }
 
-    public Account(String number, double balance, String custormerName, String customerEmailAddress,
-            String customerPhoneNumber) {
+    public Account(String number, double balance, String custormerName, String customerEmailAddress, String customerPhoneNumber) {
         System.out.println("Account constructor with parameters called");
         this.number = number;
         this.balance = balance;
         this.customerName = custormerName;
         this.customerEmailAddress = customerEmailAddress;
         this.customerPhoneNumber = customerPhoneNumber;
+    }
+
+    public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) {
+        this("80085", 100.50, customerName, customerEmailAddress, customerPhoneNumber);
     }
 
     public String getNumber() {
