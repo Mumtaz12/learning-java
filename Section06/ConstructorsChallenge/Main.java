@@ -1,7 +1,7 @@
 package Section06.ConstructorsChallenge;
 
 // import Section06.ConstructorsChallenge.Account;
-
+// import Section06.ConstructorsChallenge.VipCustomer;
 public class Main {
     public static void main(String[] args) {
 //        Account bobsAccount = new Account("lol", 150, "Billy",
