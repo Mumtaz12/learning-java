@@ -1,11 +1,11 @@
 package Section08.SortedArray;
 
+import static Section08.SortedArray.SortedArray.*;
+
 public class Main {
     public static void main(String[] args) {
-        SortedArray sortArray = new SortedArray();
-
-        int[] unsortedArray = sortArray.getIntegers(5);
-        int[] sortedArray = sortArray.sortIntegers(unsortedArray);
-        sortArray.printArray(sortedArray);
+        int[] unsortedArray = getIntegers(5);
+        int[] sortedArray = sortIntegers(unsortedArray);
+        printArray(sortedArray);
     }
 }
