@@ -29,7 +29,11 @@ public class Branch {
         return false;
     }
 
-    public Customer findCustomer(String customerName) {
+    private Customer findCustomer(String customerName) {
+
+        // make a loop through the list
+        // find the customer with if(this.customers.get(i).getName().equals(nameOfCustomer)){}
+        // return it if found, else return null
         return null;
     }
 }
