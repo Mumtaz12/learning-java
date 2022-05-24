@@ -21,26 +21,31 @@ public class Branch {
     }
 
     public boolean newCustomer(String customerName, double initialTransaction) {
-        // check if new user
+        if (findCustomer(customerName) != null) {
+            return false;
+        }
 
-        // if not exist, create new user
-        // else return false
+        Customer newCustomer = new Customer(customerName, initialTransaction);
+        customers.add(newCustomer);
 
-
-        
-        return false;
+        return true;
     }
 
     public boolean addCustomerTransaction(String customerName, double transaction) {
-        // return true if transaction is added
+        Customer customer = findCustomer(customerName);
+        if (customer != null) {
+            customer.addTransaction(transaction);
+            return true;
+        }
         return false;
     }
 
     private Customer findCustomer(String customerName) {
-
-        // make a loop through the list
-        // find the customer with if(this.customers.get(i).getName().equals(nameOfCustomer)){}
-        // return it if found, else return null
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getName().equals(customerName)) {
+                return customers.get(i);
+            }
+        }
         return null;
     }
 }
