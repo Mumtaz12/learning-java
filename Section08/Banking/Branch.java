@@ -21,11 +21,18 @@ public class Branch {
     }
 
     public boolean newCustomer(String customerName, double initialTransaction) {
+        // check if new user
+
+        // if not exist, create new user
+        // else return false
+
+
+        
         return false;
     }
 
     public boolean addCustomerTransaction(String customerName, double transaction) {
-
+        // return true if transaction is added
         return false;
     }
 

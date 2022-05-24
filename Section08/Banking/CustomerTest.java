@@ -27,8 +27,6 @@ public class CustomerTest {
 
         double transaction = 10.33;
         customer.addTransaction(transaction);
-
-        ArrayList<Double> billysTransactions = customer.getTransactions();
         double firstTransaction = customer.getTransactions().get(0);
 
         assertEquals(10.33, firstTransaction, 0.001);
