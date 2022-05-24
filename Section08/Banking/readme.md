@@ -14,7 +14,7 @@ Implement the following classes:
 branch was added successfully or false otherwise.
 
 - addCustomer(), has three parameters of type String (name of the branch), String (name of the customer), double (
-initial transaction) and returns a boolean. It returns true if the customer was added successfully or false otherwise.
+initial transaction) and returns a boolean. It returns true if the customer was added successfully **or** false otherwise.
 
 - addCustomerTransaction(), has three parameters of type String (name of the branch), String (name of the customer),
 double (transaction) and returns a boolean. It returns true if the customers transaction was added successfully or false
@@ -84,11 +84,9 @@ Customer: Percy[3]
 - newCustomer(), has two parameters of type String (name of customer), double (initial transaction) and returns a
 boolean. Returns true if the customer was added successfully or false otherwise.
 
-- addCustomerTransaction(), has two parameters of type String (name of customer), double (transaction) and returns a
-boolean. Returns true if the customers transaction was added successfully or false otherwise.
+- addCustomerTransaction(), has two parameters of type String (name of customer), double (transaction) and returns a boolean. Returns true if the customers transaction was added successfully or false otherwise.
 
-- findCustomer(), has one parameter of type String (name of customer) and returns a Customer. Return the Customer if
-they exist, null otherwise.
+- findCustomer(), has one parameter of type String (name of customer) and returns a Customer. Return the Customer if they exist, null otherwise.
 
 3. Customer
 
