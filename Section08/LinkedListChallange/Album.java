@@ -42,9 +42,10 @@ public class Album {
     }
 
     public boolean addToPlayList(String title, LinkedList<Song> playList) {
-        Song song = findSong(title);
-        if (song != null) {
-            playList.add(song);
+        Song checkedSong = findSong(title);
+        if (checkedSong != null) {
+            playList.add(checkedSong);
+            return true;
         }
         System.out.println("This album does not hava a track with title " + title);
         return false;
