@@ -2,7 +2,8 @@ package Section09.AbstractClassChallenge;
 
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList list = new MyLinkedList(null);
+//        MyLinkedList list = new MyLinkedList(null);
+        SearchTree list = new SearchTree(null);
         list.traverse(list.getRoot());
 
 //        String stringData = "Darwin Brisbane Perth Melbourne Canberra Adelaide Sydney Canberra";
