@@ -1,14 +1,7 @@
 package Section09.AbstractClass;
 
-public class SearchTree {
-}
-
-
-
-/*
-public class SearchTree implements NodeList{
-
-    private ListItem root = null;
+public class SearchTree implements NodeList {
+    private ListItem root;
 
     public SearchTree(ListItem root) {
         this.root = root;
@@ -16,35 +9,34 @@ public class SearchTree implements NodeList{
 
     @Override
     public ListItem getRoot() {
-        return this.root;
+        return root;
     }
 
     @Override
-    public boolean addItem(ListItem newItem) {
-        if (this.root == null) {
-            this.root = newItem;
+    public boolean addItem(ListItem item) {
+        if (root == null) {
+            root = item;
             return true;
         }
-
-        ListItem currentItem = this.root;
+        ListItem currentItem = root;
         while (currentItem != null) {
-            int comparison = (currentItem.compareTo(newItem));
+            int comparison = currentItem.compareTo(item);
             if (comparison < 0) {
                 if (currentItem.next() != null) {
                     currentItem = currentItem.next();
                 } else {
-                    currentItem.setNext(newItem);
+                    currentItem.setNext(item);
                     return true;
                 }
             } else if (comparison > 0) {
                 if (currentItem.previous() != null) {
                     currentItem = currentItem.previous();
                 } else {
-                    currentItem.setPrevious(newItem);
+                    currentItem.setPrevious(item);
                     return true;
                 }
             } else {
-                System.out.println(newItem.getValue() + " is already present");
+                System.out.println(item.getValue() + " is already present");
                 return false;
             }
         }
@@ -56,11 +48,11 @@ public class SearchTree implements NodeList{
         if (item != null) {
             System.out.println("Deleting item " + item.getValue());
         }
-        ListItem currentItem = this.root;
+        ListItem currentItem = root;
         ListItem parentItem = currentItem;
 
         while (currentItem != null) {
-            int comparison = (currentItem.compareTo(item));
+            int comparison = currentItem.compareTo(item);
             if (comparison < 0) {
                 parentItem = currentItem;
                 currentItem = currentItem.next();
@@ -68,7 +60,6 @@ public class SearchTree implements NodeList{
                 parentItem = currentItem;
                 currentItem = currentItem.previous();
             } else {
-                // equal: we've found the item so remove it
                 performRemoval(currentItem, parentItem);
                 return true;
             }
@@ -76,6 +67,14 @@ public class SearchTree implements NodeList{
         return false;
     }
 
+    @Override
+    public void traverse(ListItem item) {
+        if (item != null) {
+            traverse(item.previous());
+            System.out.println(item.getValue());
+            traverse(item.next());
+        }
+    }
 
     private void performRemoval(ListItem item, ListItem parent) {
         if (item.next() == null) {
@@ -84,40 +83,31 @@ public class SearchTree implements NodeList{
             } else if (parent.previous() == item) {
                 parent.setPrevious(item.previous());
             } else {
-                this.root = item.previous();
+                root = item.previous();
             }
         } else if (item.previous() == null) {
             if (parent.next() == item) {
-                parent.setNext(item.next());
-            } else if (parent.previous() == item) {
-                parent.setPrevious(item.next());
+                if (parent.next() == item) {
+                    parent.setNext(item.next());
+                } else if (parent.previous() == item) {
+                    parent.setPrevious(item.next());
+                } else {
+                    root = item.next();
+                }
             } else {
-                this.root = item.next();
+                ListItem currentItem = item.next();
+                ListItem leftMostParent = item;
+                while (currentItem.previous() != null) {
+                    leftMostParent = currentItem;
+                    currentItem = currentItem.previous();
+                }
+                item.setValue((ListItem) currentItem.getValue());
+                if (leftMostParent == item) {
+                    item.setNext(currentItem.next());
+                } else {
+                    leftMostParent.setPrevious(currentItem.next());
+                }
             }
-        } else {
-
-            ListItem current = item.next();
-            ListItem leftmostParent = item;
-            while (current.previous() != null) {
-                leftmostParent = current;
-                current = current.previous();
-            }
-            item.setValue(current.getValue());
-            if (leftmostParent == item) {
-                item.setNext(current.next());
-            } else {
-                leftmostParent.setPrevious(current.next());
-            }
-        }
-    }
-
-    @Override
-    public void traverse(ListItem root) {
-        if (root != null) {
-            traverse(root.previous());
-            System.out.println(root.getValue());
-            traverse(root.next());
         }
     }
 }
-* */

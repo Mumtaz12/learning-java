@@ -3,9 +3,9 @@ package Section09.AbstractClass;
 public interface NodeList {
     ListItem getRoot();
 
-    boolean addItem();
+    boolean addItem(ListItem item);
 
-    boolean removeItem();
+    boolean removeItem(ListItem item);
 
-    void traverse();
+    void traverse(ListItem item);
 }

@@ -1,15 +1,8 @@
 package Section09.AbstractClass;
 
-public class MyLinkedList {
-}
-
-
-
-
-/*
 public class MyLinkedList implements NodeList {
 
-    private ListItem root = null;
+    private ListItem root;
 
     public MyLinkedList(ListItem root) {
         this.root = root;
@@ -17,37 +10,35 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public ListItem getRoot() {
-        return this.root;
+        return root;
     }
 
     @Override
-    public boolean addItem(ListItem newItem) {
-        if (this.root == null) {
-            this.root = newItem;
+    public boolean addItem(ListItem item) {
+        if (root == null) {
+            root = item;
             return true;
         }
-
-        ListItem currentItem = this.root;
+        ListItem currentItem = root;
         while (currentItem != null) {
-            int comparison = (currentItem.compareTo(newItem));
+            int comparison = currentItem.compareTo(item);
             if (comparison < 0) {
                 if (currentItem.next() != null) {
                     currentItem = currentItem.next();
                 } else {
-                    currentItem.setNext(newItem).setPrevious(currentItem);
+                    currentItem.setNext(item).setPrevious(currentItem);
                     return true;
                 }
             } else if (comparison > 0) {
                 if (currentItem.previous() != null) {
-                    currentItem.previous().setNext(newItem).setPrevious(currentItem.previous());
-                    newItem.setNext(currentItem).setPrevious(newItem);
+                    currentItem.previous().setNext(item).setPrevious(currentItem.previous());
                 } else {
-                    newItem.setNext(this.root).setPrevious(newItem);
-                    this.root = newItem;
+                    item.setNext(root).setPrevious(item);
+                    root = item;
                 }
                 return true;
             } else {
-                System.out.println(newItem.getValue() + " is already present, not added.");
+                System.out.println(item.getValue() + " is already present, not added.");
                 return false;
             }
         }
@@ -59,23 +50,22 @@ public class MyLinkedList implements NodeList {
         if (item != null) {
             System.out.println("Deleting item " + item.getValue());
         }
-
-        ListItem currentItem = this.root;
+        ListItem currentItem = root;
         while (currentItem != null) {
             int comparison = currentItem.compareTo(item);
             if (comparison == 0) {
-                if (currentItem == this.root) {
-                    this.root = currentItem.next();
+                if (currentItem == root) {
+                    root = currentItem.next();
                 } else {
                     currentItem.previous().setNext(currentItem.next());
                     if (currentItem.next() != null) {
-                        currentItem.next().setPrevious(currentItem.previous());
+                        currentItem.next().setPrevious((currentItem.previous()));
                     }
                 }
                 return true;
             } else if (comparison < 0) {
                 currentItem = currentItem.next();
-            } else { // comparison > 0
+            } else {
                 return false;
             }
         }
@@ -83,15 +73,15 @@ public class MyLinkedList implements NodeList {
     }
 
     @Override
-    public void traverse(ListItem root) {
-        if (root == null) {
+    public void traverse(ListItem item) {
+        if (item == null) {
             System.out.println("The list is empty");
-        }else {
-            while (root != null) {
-                System.out.println(root.getValue());
-                root = root.next();
+        } else {
+            while (item != null) {
+                System.out.println(item.getValue());
+                item = item.next();
             }
         }
+
     }
 }
-* */
